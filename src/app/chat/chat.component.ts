@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ChatService } from '../services/chatservice.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ChatService } from '../services/chatservice.service';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   @Output() closeChatEmitter = new EventEmitter();
 
@@ -18,6 +18,14 @@ export class ChatComponent implements OnInit {
 
   backToHome(): void {
     this.closeChatEmitter.emit()
+  }
+
+  ngOnDestroy(): void {
+    this.service.stopChatConnection()
+  }
+
+  SendMessage(event: any): void {
+    this.service.sendMessage(event)
   }
 
 }

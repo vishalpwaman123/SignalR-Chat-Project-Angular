@@ -17,21 +17,19 @@
     <div class="card border-secondary mb-3">
       <div class="card-header h3 text-muted text-center">User</div>
       <div class="card-body" style="min-height: 555px">
-        <div class="row mt-1">
+        <div class="row mt-1" *ngFor="let user of service.onlineUsers">
           <div class="col">
             <div class="d-grid">
-              <button type="button" class="btn btn-success card-text btn-block">
-                {{ service.currentName }}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-1">
-          <div class="col">
-            <div class="d-grid">
-              <button type="button" class="btn btn-dark card-text btn-block">
-                User2
+              <button
+                type="button"
+                class="btn btn-success card-text btn-block"
+                [ngClass]="{
+                  'btn-success': user === service.currentName,
+                  'btn-dark': user !== service.currentName
+                }"
+                [disabled]="user === service.currentName"
+              >
+                {{ user }}
               </button>
             </div>
           </div>
@@ -44,19 +42,11 @@
     <div class="card border-secondary">
       <div class="card-header h3 text-muted text-center">Message</div>
       <div class="card-body" style="height: 500px">
-        <div style="overflow-y: auto; height: 450px">
-          <p class="card-text">
-            <span class="text-primary">User1 : </span>
-            <span class="ml-1">Some messages goes here</span>
-          </p>
-          <p class="card-text">
-            <span class="text-primary">User2 : </span>
-            <span class="ml-1">Some messages goes here</span>
-          </p>
-        </div>
+        <app-chat-message [messages]="this.service.message"></app-chat-message>
       </div>
       <div class="card-footer">
-        <form autocomplete="off">
+        <app-chat-input (contentEmitter)="SendMessage($event)"></app-chat-input>
+        <!-- <form autocomplete="off">
           <div class="row">
             <div class="col-9">
               <input
@@ -73,7 +63,7 @@
               </div>
             </div>
           </div>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>

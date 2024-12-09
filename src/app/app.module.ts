@@ -10,20 +10,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { ChatMessageComponent } from './chat-message/chat-message.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, ChatComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, ChatComponent, ChatInputComponent, ChatMessageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
