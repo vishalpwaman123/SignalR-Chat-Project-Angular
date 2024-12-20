@@ -15,9 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
 import { ChatInputComponent } from './chat-input/chat-input.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { PrivateChatComponent } from './private-chat/private-chat.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, ChatComponent, ChatInputComponent, ChatMessageComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, ChatComponent, ChatInputComponent, ChatMessageComponent, PrivateChatComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

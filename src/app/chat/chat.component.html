@@ -28,6 +28,7 @@
                   'btn-dark': user !== service.currentName
                 }"
                 [disabled]="user === service.currentName"
+                (dblclick)="openPrivateChat(user)"
               >
                 {{ user }}
               </button>
@@ -68,3 +69,4 @@
     </div>
   </div>
 </div>
+ 
